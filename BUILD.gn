@@ -88,7 +88,9 @@ if (defined(ohos_lite)) {
       if (is_ohos && is_clang &&
           (target_cpu == "arm" || target_cpu == "arm64")) {
         ldflags = [ "-Wl,-Bsymbolic" ]
-        defines = [ "PNG_ARM_NEON" ]
+        if (target_cpu == "arm64") {
+          defines = [ "PNG_ARM_NEON" ]
+        }
       }
     }
   }
